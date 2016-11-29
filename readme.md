@@ -2,6 +2,8 @@
 
 A simple descriptor to hold the details important for making an HTTP request.
 
+Used with the com.tyro.oss.pact:pact-spring-mvc project.
+
 ## Copyright and Licensing
 
 Copyright (C) 2016 Tyro Payments Pty Ltd
@@ -17,3 +19,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+## Contributing
+
+See (CONTRIBUTING.md) for details.
