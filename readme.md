@@ -22,4 +22,4 @@ limitations under the License.
 
 ## Contributing
 
-See (CONTRIBUTING.md) for details.
+See [CONTRIBUTING](CONTRIBUTING.md) for details.
