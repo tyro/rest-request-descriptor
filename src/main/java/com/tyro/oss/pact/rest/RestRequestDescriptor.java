@@ -2,7 +2,7 @@
  * #%L
  * rest-request-descriptor
  * %%
- * Copyright (C) 2016 Tyro Payments Pty Ltd
+ * Copyright (C) 2016 - 2017 Tyro Payments Pty Ltd
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,30 @@ public class RestRequestDescriptor<T> {
         this.parameterizedResponseType = parameterizedResponseType;
     }
 
+    private RestRequestDescriptor(String url, HttpMethod method, Object request, Class<T> responseType, ParameterizedTypeReference<T> parameterizedResponseType) {
+        this.url = url;
+        this.method = method;
+        this.request = request;
+        this.responseType = responseType;
+        this.parameterizedResponseType = parameterizedResponseType;
+    }
+
+    public static Builder<Object> newRequestBuilder(String url) {
+        return new Builder<>(url);
+    }
+
+    public static Builder<Object> newGetBuilder(String url) {
+        return new Builder<>(url).withMethod(HttpMethod.GET);
+    }
+
+    public static Builder<Object> newPostBuilder(String url) {
+        return new Builder<>(url).withMethod(HttpMethod.POST);
+    }
+
+    public static Builder<Object> newDeleteBuilder(String url) {
+        return new Builder<>(url).withMethod(HttpMethod.DELETE);
+    }
+
     public String getUrl() {
         return url;
     }
@@ -79,5 +103,53 @@ public class RestRequestDescriptor<T> {
     @Override
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
+    }
+
+    public static class Builder<T> {
+        private final String url;
+
+        private HttpMethod method;
+        private Object request;
+
+        private Class<T> responseType;
+        private ParameterizedTypeReference<T> parameterizedResponseType;
+
+        private Builder(String url) {
+            this.url = url;
+        }
+
+        public Builder<T> withMethod(HttpMethod method) {
+            this.method = method;
+            return this;
+        }
+
+        public Builder<T> withRequest(Object request) {
+            this.request = request;
+            return this;
+        }
+
+        @SuppressWarnings("unchecked")
+        public <R> Builder<R> withResponseType(Class<R> responseType) {
+            this.responseType = (Class<T>) responseType;
+            return (Builder<R>) this;
+        }
+
+        @SuppressWarnings("unchecked")
+        public <R> Builder<R> withParameterizedResponseType(ParameterizedTypeReference<R> parameterizedResponseType) {
+            this.parameterizedResponseType = (ParameterizedTypeReference<T>) parameterizedResponseType;
+            return (Builder<R>) this;
+        }
+
+        public RestRequestDescriptor<T> build() {
+            if (bothResponseTypeAndParameterizedResponseTypeAreEitherSetOrUnset()) {
+                throw new IllegalStateException("You must set one of either responseType or parameterizedResponseType");
+            }
+
+            return new RestRequestDescriptor<>(url, method, request, responseType, parameterizedResponseType);
+        }
+
+        private boolean bothResponseTypeAndParameterizedResponseTypeAreEitherSetOrUnset() {
+            return (responseType != null) == (parameterizedResponseType != null);
+        }
     }
 }
