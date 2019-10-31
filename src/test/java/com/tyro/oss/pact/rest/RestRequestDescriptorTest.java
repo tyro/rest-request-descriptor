@@ -7,9 +7,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,21 +17,19 @@
  * limitations under the License.
  * #L%
  */
+package com.tyro.oss.pact.rest;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 
-import com.tyro.oss.pact.rest.RestRequestDescriptor;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
-public class RestRequestDescriptorTest {
+class RestRequestDescriptorTest {
 
     @Test
-    public void shouldNotAllowBothParameterizedResponseTypeAndResponseTypeToBeSet() throws Exception {
+    void shouldNotAllowBothParameterizedResponseTypeAndResponseTypeToBeSet() {
         try {
             RestRequestDescriptor.newRequestBuilder("url")
                     .withParameterizedResponseType(createStringParameterizedTypeReference())
@@ -44,7 +42,7 @@ public class RestRequestDescriptorTest {
     }
 
     @Test
-    public void shouldNotAllowNotSettingEitherOfParameterizedResponseTypeOrResponseType() throws Exception {
+    void shouldNotAllowNotSettingEitherOfParameterizedResponseTypeOrResponseType() {
         try {
             RestRequestDescriptor.newRequestBuilder("url")
                     .build();
@@ -55,7 +53,7 @@ public class RestRequestDescriptorTest {
     }
 
     @Test
-    public void shouldAllowSettingEitherParameterizedResponseTypeOrResponseType() throws Exception {
+    void shouldAllowSettingEitherParameterizedResponseTypeOrResponseType() {
         RestRequestDescriptor.newRequestBuilder("url")
                 .withParameterizedResponseType(createStringParameterizedTypeReference())
                 .build();
@@ -66,30 +64,30 @@ public class RestRequestDescriptorTest {
     }
 
     @Test
-    public void shouldCorrectlyConfigureGetBuilder() throws Exception {
+    void shouldCorrectlyConfigureGetBuilder() {
         RestRequestDescriptor<String> requestDescriptor = RestRequestDescriptor.newGetBuilder("url")
                 .withResponseType(String.class)
                 .build();
 
-        assertThat(requestDescriptor.getMethod(), is(HttpMethod.GET));
+        assertEquals(HttpMethod.GET, requestDescriptor.getMethod());
     }
 
     @Test
-    public void shouldCorrectlyConfigurePostBuilder() throws Exception {
+    void shouldCorrectlyConfigurePostBuilder() {
         RestRequestDescriptor<String> requestDescriptor = RestRequestDescriptor.newPostBuilder("url")
                 .withResponseType(String.class)
                 .build();
 
-        assertThat(requestDescriptor.getMethod(), is(HttpMethod.POST));
+        assertEquals(HttpMethod.POST, requestDescriptor.getMethod());
     }
 
     @Test
-    public void shouldCorrectlyConfigureDeleteBuilder() throws Exception {
+    void shouldCorrectlyConfigureDeleteBuilder() {
         RestRequestDescriptor<String> requestDescriptor = RestRequestDescriptor.newDeleteBuilder("url")
                 .withResponseType(String.class)
                 .build();
 
-        assertThat(requestDescriptor.getMethod(), is(HttpMethod.DELETE));
+        assertEquals(HttpMethod.DELETE, requestDescriptor.getMethod());
     }
 
     private static ParameterizedTypeReference<String> createStringParameterizedTypeReference() {
