@@ -1,10 +1,21 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.tyro.oss.pact</groupId>
     <artifactId>rest-request-descriptor</artifactId>
     <version>1.0.1-SNAPSHOT</version>
+    <name>REST Request Descriptor</name>
+    <description>A simple descriptor to hold the details important for making an HTTP request.</description>
+    <url>https://github.com/tyro/rest-request-descriptor</url>
+
+    <scm>
+        <connection>scm:git:https://github.com/tyro/rest-request-descriptor.git</connection>
+        <developerConnection>scm:git:https://github.com/tyro/rest-request-descriptor.git</developerConnection>
+        <url>https://github.com/tyro/rest-request-descriptor</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -119,4 +130,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <email>opensource@tyro.com</email>
+            <organization>Tyro Payments Limited</organization>
+            <organizationUrl>https://www.tyro.com</organizationUrl>
+        </developer>
+    </developers>
 </project>
