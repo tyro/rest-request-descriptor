@@ -1,11 +1,23 @@
 # rest-request-descriptor
 
+[![Download](https://maven-badges.herokuapp.com/maven-central/com.tyro.oss.pact/rest-request-descriptor/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.tyro.oss.pact/rest-request-descriptor)
 [![Build Status](https://travis-ci.org/tyro/rest-request-descriptor.svg?branch=master)](https://travis-ci.org/tyro/rest-request-descriptor)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 A simple descriptor to hold the details important for making an HTTP request.
 
 Used with the com.tyro.oss.pact:pact-spring-mvc project.
+
+## Getting Started
+
+rest-request-descriptor is available on Maven Central.
+```xml
+<dependency>
+    <groupId>com.tyro.oss.pact</groupId>
+    <artifactId>rest-request-descriptor</artifactId>
+    <version>1.0.1</version>
+</dependency>
+```
 
 ## Copyright and Licensing
 
