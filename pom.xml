@@ -19,7 +19,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <springframework.version>5.2.0.RELEASE</springframework.version>
+        <springframework.version>6.0.0</springframework.version>
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
     </properties>
 
